@@ -1,0 +1,11 @@
+.catchphrase {
+  font-size: 3rem; /* Adjust the size as needed */
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+.lead {
+  font-size: 1.5rem; /* Adjust the size as needed */
+  text-align: center;
+  margin-top: 1rem;
+}
