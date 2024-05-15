@@ -1,12 +1,4 @@
-{% extends 'index.html' %} {% block navbar %}
-
-<style>
-  .todo-item-container {
-    display: flex;
-    width: 6/8;
-    justify-content: space-between;
-  }
-</style>
+{% extends index.html %} {%block main%}
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand">Todo Application</a>
@@ -25,19 +17,17 @@
     {%endif%}
   </div>
 </nav>
-{% endblock %} {% block content %} {%if user.is_authenticated %}
+{%endblock%} {%block content%}
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="todo-form">
-        <form id="todoForm" action="addtodo" method="post">
-          {% csrf_token %}
+        <form id="todoForm">
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              id="new_todo"
-              name="name"
+              id="newTodo"
               placeholder="Add a new task"
               required
             />
@@ -48,34 +38,9 @@
         </form>
       </div>
       <div id="todoList">
-        {% for todo in todos %}
-        <div class="todo-item-container">
-          <h1 class="todo-text">{{todo.name}}</h1>
-          <a
-            class="btn btn-outline-danger"
-            href="delete/{{todo.id}}"
-            method="DELETE"
-          >
-            delete</a
-          >
-        </div>
-        {% endfor %}
         <!-- Todo items will be added here dynamically -->
       </div>
     </div>
   </div>
 </div>
-
-{% else %}
-<div class="container mt-4">
-  <div class="row">
-    <div class="col text-center">
-      <h1 class="catchphrase">Get Things Done, One Task at a Time</h1>
-      <p class="lead">
-        Effortlessly organize your life and boost your productivity with our
-        intuitive task manager.
-      </p>
-    </div>
-  </div>
-</div>
-{%endif%} {% endblock %} {%block login%} {%endblock%}
+{%endblock%}

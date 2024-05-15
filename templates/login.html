@@ -1,0 +1,38 @@
+{% extends 'loginRegister.html' %} {%block login%}
+<div class="container register-container">
+  <div class="register-form">
+    <h2 class="text-center">Register</h2>
+    <form method="post" action="login">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_username">Username</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          id="id_username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="id_password1">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="id_password1"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mt-3">
+        Register
+      </button>
+      <div>
+        {% for message in messages%}
+        <h3 class="alert alert-info" role="alert">{{message}}</h3>
+        {%endfor%}
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock%}
