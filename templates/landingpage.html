@@ -3,8 +3,16 @@
 <style>
   .todo-item-container {
     display: flex;
+    flex-direction: column;
     width: 6/8;
     justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .todo-item-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
   }
 </style>
 <nav class="navbar bg-body-tertiary">
@@ -50,14 +58,27 @@
       <div id="todoList">
         {% for todo in todos %}
         <div class="todo-item-container">
-          <h1 class="todo-text">{{todo.name}}</h1>
-          <a
-            class="btn btn-outline-danger"
-            href="delete/{{todo.id}}"
-            method="DELETE"
-          >
-            delete</a
-          >
+          <form method="POST" action="edit/{{todo.id}}">
+            {% csrf_token %}
+            <input
+              type="text"
+              name="name"
+              value="{{ todo.name }}"
+              class="form-control"
+            />
+            <div class="todo-item-buttons">
+              <button type="submit" class="btn btn-outline-primary">
+                Save
+              </button>
+              <a
+                class="btn btn-outline-danger"
+                href="delete/{{ todo.id }}"
+                method="DELETE"
+              >
+                Delete
+              </a>
+            </div>
+          </form>
         </div>
         {% endfor %}
         <!-- Todo items will be added here dynamically -->
